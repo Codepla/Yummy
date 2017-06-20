@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			慕课网-登录
+		</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta property="qc:admins" content="77103107776157736375" />
+		<meta property="wb:webmaster" content="c4f857219bfae3cb" />
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta http-equiv="Cache-Control" content="no-transform " />
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' *.imooc.com *.mukewang.com *.baidu.com *.sina.com.cn *.bootcss.com">
+		<meta name="keywords" content="慕课网，慕课官网，MOOC，移动开发，IT技能培训，免费编程视频，php开发教程，web前端开发，在线编程学习，html5视频教程，css教程，ios开发培训，安卓开发教程"
+		/>
+		<meta name="description" content="慕课网（IMOOC）是学习编程最简单的免费平台。慕课网提供了丰富的移动端开发、php开发、web前端、html5教程以及css3视频教程等课程资源。它富有交互性及趣味性，并且你可以和朋友一起编程。"
+		/>
+		<link rel="stylesheet" href="../static/css/base.css" type="text/css" />
+		<link rel="stylesheet" href="../static/css/common.css" type="text/css" />
+		<link rel="stylesheet" href="../static/css/moco.css" type="text/css" />
+	
+		<link rel="stylesheet" href="../static/css/login.css" />
+		<script type="text/javascript">
+			var fromURL = "";
+		</script>
+	</head>
+	<body>
+		<div id="head" class="sig-head">
+			<a href="/" target="_self" class="sig-img">
+				慕课网
+			</a>
+		</div>
+		<div id="main">
+			<div class="container js-pageLogin">
+				<div class="wrap clearfix">
+					<div class="wrap-left">
+						<div class="login-wrap">
+							<div class="wel-hd">
+								<h1 class="form-h1 l">
+									欢迎登录
+								</h1>
+								<a href="/user/newsignup/from_url/" class="on-register r">
+									立即注册
+								</a>
+								<span class="no-account r">
+									没有帐号？
+								</span>
+							</div>
+							<div class="loginWrap">
+                    
+                			</div>
+							<div id="signin" class="rl-modal"> 
+							  <div class="rl-modal-header"> 
+							    <h1> 
+									<span class="active-title">登录</span> 
+									<span data-fromto="signin:signup" class="xa-showSignup">注册</span> 
+							    </h1> 
+							    <button type="button" class="rl-close" data-dismiss="modal" hidefocus="true" aria-hidden="true"></button> 
+							  </div> 
+							  <div class="rl-modal-body js-loginWrap"> 
+							  	<div class="clearfix"> 
+									<div class="l-left-wrap l"> 
+										<form id="signup-form" autocomplete="off"> 
+											<p class="rlf-tip-globle color-red" id="signin-globle-error"></p> 
+											<div class="rlf-group pr"> 
+												<input type="text" value=""  maxlength="37" name="email" data-validate="require-mobile-phone" autocomplete="off" class="xa-emailOrPhone ipt ipt-email js-own-name" placeholder="请输入登录邮箱/手机号"/> 
+												<p class="rlf-tip-wrap errorHint color-red" data-error-hint="请输入正确的邮箱或手机号"></p> 
+											</div> 
+											<div class="rlf-group  pr"> 
+												<input type="password" name="password" data-validate="require-password" class="ipt ipt-pwd js-loginPassword js-pass-pwd" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="16" autocomplete="off"/> 
+										        <p class="rlf-tip-wrap errorHint color-red " data-error-hint="请输入6-16位密码，区分大小写，不能使用空格！"></p> 
+											</div> 
+											 
+											<div class="rlf-group clearfix form-control js-verify-row"> 
+											    <input type="text"  name="verify" class="ipt ipt-verify l" data-validate="require-string" data-callback="checkverity"  maxlength="4" data-minLength="4" placeholder="请输入验证码"> 
+											    <a href="javascript:void(0)" hidefocus="true" class="verify-img-wrap js-verify-refresh"></a> 
+											    <a href="javascript:void(0)" hidefocus="true" class="icon-refresh js-verify-refresh"></a> 
+												<p class="rlf-tip-wrap errorHint color-red" data-error-hint="请输入正确验证码"></p> 
+											</div> 
+											<div class="rlf-group rlf-appendix form-control  clearfix"> 
+												<label for="auto-signin" class="rlf-autoin l" hidefocus="true"><input type="checkbox" checked="checked" class="auto-cbx" id="auto-signin">下次自动登录</label> 
+												<a href="/user/newforgot" class="rlf-forget r" target="_blank" hidefocus="true">忘记密码 </a> 
+											</div> 
+											<div class="rlf-group clearfix"> 
+												<input  type="button" value="登录" hidefocus="true" class="btn-red btn-full xa-login"/> 
+											</div> 
+									    </form> 
+									</div> 
+							  	</div> 
+							  	<div class="rl-model-footer"> 
+									<div class="pop-login-sns clearfix"> 
+										<span class="l " style="color:#666">其他方式登录</span> 
+										<a href="javascript:void(0)" hidefocus="true" data-login-sns="/passport/user/tplogin?tp=weibo" class="pop-sns-weibo r mr60"><i class="icon-weibo"></i></a> 
+										<a href="javascript:void(0)" hidefocus="true" data-login-sns="/passport/user/tplogin?tp=weixin" class="pop-sns-weixin r"><i class="icon-weixin"></i></a> 
+										<a href="javascript:void(0)" hidefocus="true" data-login-sns="/passport/user/tplogin?tp=qq" class="pop-sns-qq r"><i class="icon-qq"></i></a> 
+									</div> 
+								 	<div class="erweima xa-showQrcode"></div> 
+							  </div> 
+							  </div> 
+							  
+							</div> 
+		<div class="vright">
+			© 2014 imooc.com All Rights Reserved 京ICP备 13046642号
+		</div>
+		<!--script-->
+		<script type="text/javascript" src="//moco.imooc.com/monitor/error.html">
+		</script>
+		<script src="/passport/static/scripts/ssologin.js?v=2.0">
+		</script>
+		<script type="text/javascript" src="/static/sea-modules/seajs/seajs/2.1.1/sea.js">
+		</script>
+		<script type="text/javascript" src="/static/sea_config.js?v=201706161110">
+		</script>
+		<script type="text/javascript">
+			seajs.use("/static/page/" + OP_CONFIG.module + "/" + OP_CONFIG.page);
+		</script>
+		<div style="display: none">
+		</div>
+	</body>
+
+</html>
