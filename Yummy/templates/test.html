@@ -1,0 +1,19 @@
+<html>
+<meta charset="utf-8">
+<title>TEST FOR JS</title>
+<body>
+<div id="test_button">
+    <button id="test" type=button>测试</button>
+</div>
+</body>
+<script src="../static/js/common/jquery.min.js"></script>
+<script src="../static/js/base/base.js" charset="utf-8"></script>
+<script type="text/javascript">
+$("#test").click(function(){
+    var data = {"CMD": 10, "DATA":{"USERNAME": "test", "PASSWORD": "test123", "USER_TYPE": 1}};
+    var re_data = ajaxPost("/test.php", data);
+    console.log(re_data);
+});
+$("#getArticleTags").click();
+</script>
+</html>
