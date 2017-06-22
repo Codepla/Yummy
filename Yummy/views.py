@@ -7,8 +7,6 @@ from models import User
 import json
 import hashlib
 
-
-
 #注册
 def regist(request):
     flag = 0
