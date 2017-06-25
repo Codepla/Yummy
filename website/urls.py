@@ -18,6 +18,11 @@ from django.contrib import admin
 from Yummy import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^register/$', views.regist, name='regist'),
+    url(r'^index/$', views.index, name='index'),
+    url(r'^register/$', views.regist, name='register'),
     url(r'^login/$', views.login, name='login'),
+
+    url(r'^pay/$', views.regist, name='pay'),
+
+    url(r'^API/$', views.testApi, name='testApi'),
 ]

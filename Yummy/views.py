@@ -1,6 +1,7 @@
 #coding=utf-8
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 from django import forms
 from models import User
@@ -79,3 +80,37 @@ def logout(req):
     #清理cookie里保存username
     response.delete_cookie('username')
     return response
+
+
+@csrf_exempt
+def testApi(request):
+    '''
+    测试API接口
+    :param request:
+    :return:
+    '''
+    request_data = request.body
+    try:
+        request_data_json = json.loads(request_data)
+        cmd = request_data_json.get("CMD")
+        data = request_data_json.get("DATA")
+        if cmd == 10:
+            re_data = {
+                "shop_id": 15,
+                "shop_name": "testApi",
+                "shop_title": "qwerty",
+                "shop_type": u"商品",
+                "shop_click_num": 154
+            }
+            return render(request, 'shop_base.html', re_data)
+    except Exception as e:
+        print(str(e))
+        return HttpResponse("xxxxxxxxx")
+
+
+def register(req):
+    return HttpResponse("register")
+
+
+def pay(req):
+    return HttpResponse("pay")

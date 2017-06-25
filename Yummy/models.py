@@ -12,16 +12,16 @@ from django.db import models
 
 class GoodsDetail(models.Model):
     goods_id = models.AutoField(primary_key=True)
-    pic = models.CharField(max_length=4096)
+    pic = models.CharField(max_length=255)
     goods_name = models.CharField(max_length=255)
     size = models.CharField(max_length=255)
     price = models.CharField(max_length=255)
     stock = models.IntegerField()
     flvoar = models.CharField(max_length=255)
     strocon = models.CharField(max_length=255)
-    deliran = models.CharField(max_length=512)
-    component = models.CharField(max_length=512)
-    desc = models.CharField(max_length=1024)
+    deliran = models.CharField(max_length=255)
+    component = models.CharField(max_length=255)
+    desc = models.CharField(max_length=255)
     tips = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
@@ -31,10 +31,10 @@ class GoodsDetail(models.Model):
 
 class User(models.Model):
     user_id = models.AutoField(primary_key=True)
-    user_name = models.CharField(unique=True, max_length=512)
+    user_name = models.CharField(unique=True, max_length=255)
     password = models.CharField(max_length=1024)
     tel = models.CharField(max_length=255)
-    addr = models.CharField(max_length=1024)
+    addr = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     qq = models.CharField(db_column='QQ', max_length=255)  # Field name made lowercase.
     wechat = models.CharField(max_length=255, blank=True, null=True)

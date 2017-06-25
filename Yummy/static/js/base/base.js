@@ -23,8 +23,11 @@ function ajaxGet(url){
     });
 }
 
-function ajaxPost(url,data){
+function ajaxPost(url,data,re_type){
     /*we can use it to post data to server*/
+    var url = arguments[0] ? arguments[0] : '/index/';
+    var data = arguments[1] ? arguments[1] : '{}';
+    var re_type = arguments[2] ? arguments[2] : 'json';
     if(!url || typeof url != "string"){
         console.log("URL格式不正确");
     }
@@ -41,7 +44,11 @@ function ajaxPost(url,data){
         dataType: "json",
         success: function(data){
             try{
-                return JSON.parse(data);
+                if(re_type=='json'){
+                    return JSON.parse(data);
+                }else{
+                    return data;
+                }
             }catch(e){
                 console.debug("返回数据转为JSON失败");
                 return null;
@@ -53,5 +60,36 @@ function ajaxPost(url,data){
         }
     })
 }
+
+function setCookie(name,value){
+    /* set cookies*/
+
+    var Days = 30;
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function getCookie(name){
+    /*get cookies*/
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg)){
+        return unescape(arr[2]);
+    }else{
+        return null;
+    }
+}
+
+
+function delCookie(name){
+    /*delete cookies*/
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null){
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+}
+
 
 //TODO

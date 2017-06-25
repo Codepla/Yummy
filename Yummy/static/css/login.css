@@ -7,6 +7,26 @@
 	font-family: "寰蒋闆呴粦"
 }
 
+.ui-select {
+	width: 100px;
+	margin-left: 0px !important;
+	margin: 2px 2px 16px 16px;
+	vertical-align: middle;
+	min-width: 100px;
+	height: 25px;
+	min-height: 25px !important;
+	position: relative;
+	overflow: hidden;
+	background: #ffffff;
+
+	display: inline-block;
+	border: 1px solid #cfdde8;
+	border-radius: 5px;
+    font-size: 8px;
+   	background-position: 94%;
+   	background-repeat: no-repeat;
+}
+
 .erweima,.pcLogin {
 	float: right;
 	cursor: pointer
