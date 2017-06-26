@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block logicjs %}
 <script type="text/javascript">
-    $(document).ready(function(){
+    function getShopList(page,shop_type,shop_address,shop_ts){
+        var page = arguments[0] ? arguments[0] : 1;
+        var shop_type = arguments[1] ? arguments[1] : 0;
+        var shop_address = arguments[2] ? arguments[2] : 0;
+        var shop_ts = arguments[3] ? arguments[3] : 0;
         var url = "/API/";
         var cmd = 10;
-        var data = {"CMD": cmd, "DATA": {}};
-		var shopListStr = ajaxPost(url, data, 'str');
+        var data = {"CMD": cmd, "DATA": {"PAGE_NUM":page,"SHOP_TYPE":shop_type,"SHOP_ADDR":shop_address,"SHOP_TS":shop_ts}};
+		var shopListStr = ajaxPost(url, data, 'str', false);
 		$('#shop-list').html(shopListStr);
+    }
+    $(document).ready(function(){
+        getShopList();
 	});
 </script>
 {% endblock %}

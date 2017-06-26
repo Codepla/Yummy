@@ -1,29 +1,30 @@
-<div class="course-list">
+ <div class="course-list">
     <div class="moco-course-list">
         <ul class="clearfix">
+            {% for shop in res.shop_list %}
             <div class='index-card-container course-card-container container '>
-                <a target="_blank" class='course-card' href="./shop/?id={{ shop_id }}">
+                <a target="_blank" class='course-card' href="./shop/?id={{ shop.shop_id }}">
                     <div class='course-card-top cart-color red'>
                         <i class='imv2-war'>
                         </i>
                         <span>
-                            {{ shop_name }}
+                            {{ shop.shop_name }}
                         </span>
                     </div>
                     <div class='course-card-content'>
                         <h3 class='course-card-name'>
-                            {{ shop_name }}
+                            {{ shop.shop_name }}
                         </h3>
                         <p title='{{ shop_title }}'>
-                            {{ shop_title }}
+                            {{ shop.shop_title }}
                         </p>
                         <div class='clearfix course-card-bottom'>
                             <div class='course-card-info'>
-                                {{ shop_type }}
+                                {{ shop.shop_type }}
                                 <span>
                                     ·
                                 </span>
-                                {{ shop_click_num }}人点击
+                                {{ shop.shop_click_num }}人点击
                             </div>
                         </div>
                     </div>
@@ -31,6 +32,62 @@
                 <div class='course-card-bk'>
                 </div>
             </div>
+            {% endfor %}
         </ul>
     </div>
+</div>
+<div class="page">
+    {% ifequal 1 res.curr_page %}
+        <span class="disabled_page">
+            首页
+        </span>
+        <span class="disabled_page">
+            上一页
+        </span>
+    {% else %}
+        <a href="javascript:getShopList(1)">
+            首页
+        </a>
+        <a href="javascript:getShopList({{ res.curr_page|add:-1 }})">
+            上一页
+        </a>
+    {% endifequal %}
+    {% for i in res.total_page %}
+        {% if res.total_page|length < 8 %}
+            {% ifequal i res.curr_page %}
+                <a href="javascript:getShopList({{ res.curr_page }})" class="active text-page-tag">
+                    {{ res.curr_page }}
+                </a>
+            {% else %}
+            <a class="text-page-tag" href="javascript:getShopList({{ i }})">
+                {{ i }}
+            </a>
+            {% endifequal %}
+        {% else %}
+            {% ifequal i res.curr_page %}
+                <a href="javascript:getShopList({{ res.curr_page }})" class="active text-page-tag">
+                    {{ res.curr_page }}
+                </a>
+            {% else %}
+            <a class="text-page-tag" href="javascript:getShopList({{ i }})">
+                {{ res.total_page|length|add:-7|add:i }}
+            </a>
+            {% endifequal %}
+        {% endif %}
+    {% endfor %}
+    {% ifequal i res.total_page|length %}
+         <span class="disabled_page">
+            下一页
+        </span>
+        <span class="disabled_page">
+            尾页
+        </span>
+    {% else %}
+        <a href="javascript:getShopList({{ res.curr_page|add:1 }})">
+            下一页
+        </a>
+        <a href="javascript:getShopList({{ res.total_page|last }})">
+            尾页
+        </a>
+    {% endifequal %}
 </div>

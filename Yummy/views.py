@@ -85,7 +85,7 @@ def logout(req):
 @csrf_exempt
 def testApi(request):
     '''
-    测试API接口
+    测试店铺查询API接口
     :param request:
     :return:
     '''
@@ -94,15 +94,28 @@ def testApi(request):
         request_data_json = json.loads(request_data)
         cmd = request_data_json.get("CMD")
         data = request_data_json.get("DATA")
+        # 查询条件
+        pase_size = 10  # 页面店铺数量
+        page_num = data.get("PAGE_NUM", 1)  # 当前页
+        shop_type = data.get("SHOP_TYPE", 1)  # 商铺种类 shop_type,shop_address,shop_td可用枚举值
+        shop_address = data.get("SHOP_ADDR", 1)  # 商铺地址
+        shop_ts = data.get("SHOP_TS", 1)  # 商铺特色
         if cmd == 10:
-            re_data = {
+            # re_data = handleData.getShopListByCondition(data)  # handleData 提供所有数据库操作接口
+            # 测试
+            re_data = []
+            info = {
                 "shop_id": 15,
                 "shop_name": "testApi",
                 "shop_title": "qwerty",
                 "shop_type": u"商品",
-                "shop_click_num": 154
+                "shop_click_num": 154,
+                "shop_pic": ''
             }
-            return render(request, 'shop_base.html', re_data)
+            for i in range(8):
+                re_data.append(info)
+            response_data = {"total_page": range(1, 9+1), "curr_page": 1, "shop_list": re_data}  # 返回总页数，当前页数和店铺列表
+            return render(request, 'shop_base.html', {"res": response_data})
     except Exception as e:
         print(str(e))
         return HttpResponse("xxxxxxxxx")

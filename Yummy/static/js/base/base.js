@@ -23,11 +23,13 @@ function ajaxGet(url){
     });
 }
 
-function ajaxPost(url,data,re_type){
+function ajaxPost(url,data,re_type,is_async){
     /*we can use it to post data to server*/
     var url = arguments[0] ? arguments[0] : '/index/';
     var data = arguments[1] ? arguments[1] : '{}';
-    var re_type = arguments[2] ? arguments[2] : 'json';
+    var re_type = arguments[2] ? arguments[2] : 'json'; //返回数据类型，默认为JSON
+    var is_async = !arguments[3] ? arguments[3] : true; //是否异步，默认异步
+    var re_data = '';
     if(!url || typeof url != "string"){
         console.log("URL格式不正确");
     }
@@ -41,24 +43,25 @@ function ajaxPost(url,data,re_type){
         type: "POST",
         url: url,
         data: request_data,
-        dataType: "json",
+        async: is_async,  //同步
         success: function(data){
             try{
                 if(re_type=='json'){
-                    return JSON.parse(data);
+                    re_data = JSON.parse(data);
                 }else{
-                    return data;
+                    re_data = data;
                 }
             }catch(e){
                 console.debug("返回数据转为JSON失败");
-                return null;
+                re_data = null;
             }
         },
         error: function(jqXHR){
             alert("请求参数错误"+jqXHR.status);
-            return null;
+            re_data = null;
         }
-    })
+    });
+    return re_data;
 }
 
 function setCookie(name,value){

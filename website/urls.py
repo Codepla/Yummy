@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^register/$', views.regist, name='register'),
     url(r'^login/$', views.login, name='login'),
 
-    url(r'^pay/$', views.regist, name='pay'),
+    url(r'^pay/$', views.pay, name='pay'),
 
     url(r'^API/$', views.testApi, name='testApi'),
 ]
