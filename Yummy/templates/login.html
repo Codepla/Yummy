@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	{% load staticfiles %}
 	<head>
 		<meta charset="utf-8">
 		<title>
@@ -16,18 +17,15 @@
 		/>
 		<meta name="description" content=""
 		/>
-		<link rel="stylesheet" href="../static/css/base.css" type="text/css" />
-		<link rel="stylesheet" href="../static/css/common.css" type="text/css" />
-		<link rel="stylesheet" href="../static/css/moco.css" type="text/css" />
+		<link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
+		<link rel="stylesheet" href="{% static 'css/common.css' %}" type="text/css" />
+		<link rel="stylesheet" href="{% static 'css/moco.css' %}" type="text/css" />
 	
-		<link rel="stylesheet" href="../static/css/login.css" />
-		<script type="text/javascript">
-			var fromURL = "";
-		</script>
+		<link rel="stylesheet" href="{% static 'css/login.css' %}" />
 	</head>
 	<body>
 		<div id="head" class="sig-head">
-			<a href="./index.html" target="_self" class="sig-img">
+			<a href="{% url 'index' %}" target="_self" class="sig-img">
 				店家管理平台
 			</a>
 		</div>
@@ -40,7 +38,7 @@
 								<h1 class="form-h1 l">
 									欢迎登录
 								</h1>
-								<a href="./register.html" class="on-register r">
+								<a href="{% url 'register' %}" class="on-register r">
 									立即注册
 								</a>
 								<span class="no-account r">
@@ -53,7 +51,7 @@
 							  	<div class="rl-modal-body js-loginWrap">
 							  		<div class="clearfix">
 										<div class="l-left-wrap l">
-											<form id="signup-form" action="./do_login" method="POST" autocomplete="off">
+											<form id="signup-form" action="{% url 'do_login' %}" method="POST" autocomplete="off">
 												<p class="rlf-tip-globle color-red" id="signin-globle-error"></p>
 												<div class="rlf-group pr">
 													<input id="username" type="text" value=""  maxlength="37" name="username" data-validate="require-mobile-phone" autocomplete="off" class="xa-emailOrPhone ipt ipt-email js-own-name" placeholder="请输入登录用户名/手机号"/>
@@ -90,8 +88,8 @@
 		<div class="vright">
 			© 2014 5uw1st.com All Rights Reserved 京ICP备 13046642号
 		</div>
-		<script type="text/javascript" src="../static/js/common/jquery.min.js"></script>
-		<script type="text/javascript" src="../static/js/base/base.js"></script>
+		<script type="text/javascript" src="{% static 'js/common/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/base/base.js' %}"></script>
 		<script type="text/javascript">
 		/*
 			$("#login").click(function(){
@@ -103,7 +101,6 @@
 		*/
 		//function test(){alert("123456")}
 		$(document).ready(function(){
-			alert("adbcdf");
 		});
 		</script>
 		<div style="display: none">

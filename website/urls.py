@@ -19,10 +19,20 @@ from Yummy import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$', views.index, name='index'),
-    url(r'^register/$', views.regist, name='register'),
+    url(r'^register/$', views.register, name='register'),
+    url(r'^do_register/$', views.do_register, name='do_register'),
     url(r'^login/$', views.login, name='login'),
+    url(r'^do_login/$', views.do_login, name='do_login'),
 
     url(r'^pay/$', views.pay, name='pay'),
+    url(r'^shop/id=(\d+)/$', views.get_shop, name='get_shop'),
 
     url(r'^API/$', views.testApi, name='testApi'),
+
+    url(r'^feedback/$', views.feedback, name='feedback'),
+    url(r'^cooperate/$', views.cooperate, name='cooperate'),
+    url(r'^job/$', views.job, name='job'),
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^faq/$', views.faq, name='faq'),
+    url(r'^friendly/$', views.friendly, name='friendly'),
 ]

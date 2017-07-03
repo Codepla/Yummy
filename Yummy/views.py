@@ -10,7 +10,7 @@ import hashlib
 
 
 #注册
-def regist(request):
+def do_regist(request):
     flag = 0
     fail_reson = 0
     if request.method == 'POST':
@@ -32,7 +32,7 @@ def regist(request):
     else:# 自动登陆
         return login(request)
 #登陆
-def login(req):
+def do_login(req):
     if req.method == 'POST':
         received_json_data = json.loads(req.body)
 
@@ -114,16 +114,52 @@ def testApi(request):
             }
             for i in range(8):
                 re_data.append(info)
-            response_data = {"total_page": range(1, 9+1), "curr_page": 1, "shop_list": re_data}  # 返回总页数，当前页数和店铺列表
+            response_data = {"total_page": range(1, 15+1), "curr_page": page_num, "shop_list": re_data}  # 返回总页数，当前页数和店铺列表
             return render(request, 'shop_base.html', {"res": response_data})
     except Exception as e:
         print(str(e))
         return HttpResponse("xxxxxxxxx")
 
 
-def register(req):
+def get_shop(request, shop_id=5):
+    return HttpResponse(shop_id)
+
+
+def login(request):
+    return render_to_response('login.html')
+
+
+def register(request):
     return HttpResponse("register")
+
+
+def do_register(request):
+    return HttpResponse("do_register")
 
 
 def pay(req):
     return HttpResponse("pay")
+
+
+def feedback(req):
+    return HttpResponse("feedback")
+
+
+def job(req):
+    return HttpResponse("job")
+
+
+def cooperate(req):
+    return HttpResponse("cooperate")
+
+
+def contact(req):
+    return HttpResponse("contact")
+
+
+def faq(req):
+    return HttpResponse("faq")
+
+
+def friendly(req):
+    return HttpResponse("friendly")

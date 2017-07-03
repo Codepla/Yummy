@@ -3,7 +3,7 @@
         <ul class="clearfix">
             {% for shop in res.shop_list %}
             <div class='index-card-container course-card-container container '>
-                <a target="_blank" class='course-card' href="./shop/?id={{ shop.shop_id }}">
+                <a target="_blank" class='course-card' href="{% url 'get_shop' shop.shop_id %}">
                     <div class='course-card-top cart-color red'>
                         <i class='imv2-war'>
                         </i>
@@ -53,15 +53,17 @@
         </a>
     {% endifequal %}
     {% for i in res.total_page %}
-        {% if res.total_page|length < 8 %}
+        {% if res.curr_page < 8 %}
             {% ifequal i res.curr_page %}
                 <a href="javascript:getShopList({{ res.curr_page }})" class="active text-page-tag">
                     {{ res.curr_page }}
                 </a>
             {% else %}
-            <a class="text-page-tag" href="javascript:getShopList({{ i }})">
-                {{ i }}
-            </a>
+                 {% if i < 8 %}
+                    <a class="text-page-tag" href="javascript:getShopList({{ i }})">
+                        {{ i }}
+                    </a>
+                    {% endif %}
             {% endifequal %}
         {% else %}
             {% ifequal i res.curr_page %}
@@ -69,13 +71,15 @@
                     {{ res.curr_page }}
                 </a>
             {% else %}
-            <a class="text-page-tag" href="javascript:getShopList({{ i }})">
-                {{ res.total_page|length|add:-7|add:i }}
-            </a>
+                {% if i <= res.curr_page|add:3 and i >= res.curr_page|add:-3 %}
+                    <a class="text-page-tag" href="javascript:getShopList({{ i }})">
+                        {{ i }}
+                    </a>
+                {% endif %}
             {% endifequal %}
         {% endif %}
     {% endfor %}
-    {% ifequal i res.total_page|length %}
+    {% ifequal res.curr_page res.total_page|length %}
          <span class="disabled_page">
             下一页
         </span>
