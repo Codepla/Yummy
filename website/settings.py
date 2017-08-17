@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
+import pymysql
 import os
-
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,7 +80,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'test',
        'USER': 'root',
-       'PASSWORD': 'root',
+       'PASSWORD': 'mysqladmin',
        'HOST': 'localhost',
        'PORT': '3306'
     }
@@ -124,3 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+TEMPLATE_DIRS=(
+    "templates",
+)
+
+STATIC_PATH='./static/'
